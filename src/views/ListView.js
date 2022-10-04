@@ -12,7 +12,7 @@ function ListView() {
 
     const [blogList, setBlogList] = useRecoilState(blogListState);
   
-    useEffect(() => { // Hämtar datan direkt vid rendering
+    useEffect(() => { 
       apiGetAllBlogPosts().then(setBlogList); 
     },[]);
     

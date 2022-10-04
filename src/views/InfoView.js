@@ -3,19 +3,20 @@ import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { apiEditBlogPost } from "../api";
 import EditModal from "../components/EditModal";
-import { blogPostDataState, modalState, viewState } from "../states";
+import { blogPostDataState, editDataState, modalState, viewState } from "../states";
 
 
-
+// *EGEN NOTERING* skicka med blogPost-data till EditModal-komponenten 
 
 function InfoView(props){
 
 
+    const [editData, setEditData] = useRecoilState(editDataState);
     const [data, setData] = useRecoilState(blogPostDataState);
     const [modalShow, setModalShow] = useRecoilState(modalState);
     const navigate = useNavigate();
 
-    useEffect(() => { // Hämtar datan direkt vid rendering
+    useEffect(() => { 
         setModalShow(false); 
       },[]);
 
@@ -25,7 +26,8 @@ function InfoView(props){
     }
 
     const editPost = (blogPost) => {
-        apiEditBlogPost(blogPost.id, blogPost.title, blogPost.description).then()
+        setEditData(blogPost);
+        setModalShow(true);
     }
 
 
@@ -39,7 +41,7 @@ function InfoView(props){
             <div>Description: {data.blogPost.description}</div>
             <div>Created: {data.blogPost.created_date}</div>
         </div>
-        <button onClick={() => setModalShow(true)}>Edit modal</button>
+        <button onClick={() => editPost(data.blogPost)}>Edit modal</button>
         <EditModal />
         <button onClick={() => deletePost(data.blogPost)}>Delete</button>
     </>

@@ -14,9 +14,9 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 
 function App() {
 
-  const [blogList, setBlogList] = useRecoilState(blogListState);
-  
+  // *EGEN NOTERING* Se vad vi behöver ha kvar på denna nivån och vad vi kan flytta ner
 
+  const [blogList, setBlogList] = useRecoilState(blogListState);
 
   // CREATE
   const createNewBlogPost = (title, description) => {
