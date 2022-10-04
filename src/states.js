@@ -1,16 +1,16 @@
 import { atom } from "recoil";
 
 export const blogListState = atom({
-    key: 'blogPostList',
+    key: 'blogListState',
     default: []
   });
 
-export const viewState = atom({
-    key: "view",
-    default: 'list'
-  });
-
 export const blogPostDataState = atom({
-    key: 'blogPostData',
+    key: 'blogPostDataState',
     default: null
   });
+
+export const modalState = atom({
+  key: 'modalState',
+  default: false
+})

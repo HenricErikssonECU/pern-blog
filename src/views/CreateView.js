@@ -1,17 +1,18 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { viewState } from "../states";
 
 function CreateView(props){
 
-    const [view, setView] = useRecoilState(viewState);
     let [title, setTitle] = useState('');
     let [description, setDescription] = useState('')
+    const navigate = useNavigate();
 
 
     const create = () => {
         props.createNewBlogPost(title, description);
-        //setView('list');
+        navigate('/');
     }
 
 

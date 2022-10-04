@@ -1,24 +1,31 @@
 import '../css/listView.css';
 import { useRecoilValue, useRecoilState } from "recoil";
 import { blogListState, blogPostDataState, viewState } from '../states';
+import { useNavigate } from 'react-router-dom';
+import { apiGetAllBlogPosts } from '../api';
+import { useEffect } from 'react';
 
 
 
 
 function ListView() {
 
+    const [blogList, setBlogList] = useRecoilState(blogListState);
+  
+    useEffect(() => { // Hämtar datan direkt vid rendering
+      apiGetAllBlogPosts().then(setBlogList); 
+    },[]);
     
-    const [view, setView] = useRecoilState(viewState);
     const [data, setData] = useRecoilState(blogPostDataState);
-    const blogList = useRecoilValue(blogListState);
     
+    const navigate = useNavigate();
     
     const mappingFunction = (blogPost) => {
         const handleClick = () => {
             setData({
                 blogPost
             });
-            setView('info');
+            navigate('/info/' + blogPost.id)
         }
 
         return  <div key={blogPost.id} className="blog-post-container">
@@ -44,7 +51,7 @@ function ListView() {
 
     return <>
         <h1>List of blog posts</h1>
-        <button onClick={() => setView('create')}>CREATE NEW BLOG POST</button>
+        <button onClick={() => navigate('/create')}>CREATE NEW BLOG POST</button>
         {blogList.map(mappingFunction)}        
         </>
         
