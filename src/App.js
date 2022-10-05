@@ -1,13 +1,12 @@
 
 import './App.css';
-import { atom, useRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { CreateView } from './views/CreateView';
 import { InfoView } from './views/InfoView';
 import { ListView } from './views/ListView';
-import { useEffect } from 'react';
-import { apiCreateNewBlogPost, apiDeleteBlogPost, apiGetAllBlogPosts, getAllBlogPosts } from './api';
-import { blogListState, viewState } from './states';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { apiCreateNewBlogPost, apiDeleteBlogPost } from './api';
+import { blogListState } from './states';
+import { Route, Routes } from 'react-router-dom';
 
 
 

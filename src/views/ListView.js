@@ -1,6 +1,6 @@
 import '../css/listView.css';
-import { useRecoilValue, useRecoilState } from "recoil";
-import { blogListState, blogPostDataState, viewState } from '../states';
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { blogListState, blogPostDataState } from '../states';
 import { useNavigate } from 'react-router-dom';
 import { apiGetAllBlogPosts } from '../api';
 import { useEffect } from 'react';
@@ -14,17 +14,15 @@ function ListView() {
   
     useEffect(() => { 
       apiGetAllBlogPosts().then(setBlogList); 
-    },[]);
+    },[setBlogList]);
     
-    const [data, setData] = useRecoilState(blogPostDataState);
+    const setData = useSetRecoilState(blogPostDataState);
     
     const navigate = useNavigate();
     
     const mappingFunction = (blogPost) => {
         const handleClick = () => {
-            setData({
-                blogPost
-            });
+            setData(blogPost);
             navigate('/info/' + blogPost.id)
         }
 
@@ -42,10 +40,6 @@ function ListView() {
                     </div>
                 </div>
     }
-
-
-
-
 
 
 
