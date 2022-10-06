@@ -6,7 +6,7 @@ import '../css/editModal.css'
 import { modalState } from '../states';
 
 
-// *EGEN NOTERING* Läs in blogPost-datan i input-fälten. Lägg till en Save-knapp som sparar den uppdaterade blogPosten i databasen och uppdaterar InfoView med den nya blogPosten
+
 
 function EditModal({ blogPost }){
 
@@ -29,7 +29,6 @@ function EditModal({ blogPost }){
 
     const saveButton = () => {
         apiEditBlogPost(blogPost.id, title, description).then(() => navigate('/'));
-        //navigate('/');
     }
 
 

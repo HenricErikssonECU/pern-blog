@@ -15,7 +15,6 @@ export const apiGetSpecificBlogPost = async(id) => {
     try {
         //console.log(typeof(id));
         let response = await fetch(`http://localhost:5000/blogposts/${id}`);
-        console.log(response);
         return response.json();
     } catch (err) {
         console.error(err.message);
@@ -44,7 +43,6 @@ export const apiDeleteBlogPost = async(id) => {
         let response = await fetch(`http://localhost:5000/blogposts/${id}`, {
             method: 'DELETE'
         });
-        console.log(response);
         return response.json();
     } catch (err) {
         console.error(err.message);
