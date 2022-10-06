@@ -16,13 +16,22 @@ function CreateView(props){
 
 
     return <>
-        <h1>Create blog post</h1>
+        <div className="header">Create blog post</div>
+        <p className="view-btn" onClick={() => navigate('/')}>tillbaka</p>
         <form>
-            <input placeholder="Title..." onChange={event => setTitle(event.target.value)} />
-            <input placeholder="Message..." onChange={event => setDescription(event.target.value)} />
-            <button onClick={create} type="submit">Save</button>
+        <div className="modal-header">
+                    <h4 className="modal-title"> Title</h4>
+                    <input onChange={event => setTitle(event.target.value)} />
+                </div>
+                <div className="modal-body">
+                    <h4>Description</h4>
+                    <textarea className='input-desc' rows={8} cols="50" onChange={event => setDescription(event.target.value)} /> 
+                </div>
+                <button className="save-button" onClick={create}>Save</button>
         </form>
     </>
+
+    
 }
 
 export { CreateView };

@@ -37,13 +37,14 @@ function EditModal({ blogPost }){
         <div className="modal">
             <div className="modal-content">
                 <div className="modal-header">
-                    <h4 className="modal-title"> Här ska title ins</h4>
+                    <h4 className="modal-title"> Title</h4>
                     <input value={title} onChange={event => setTitle(event.target.value)} />
                 </div>
                 <div className="modal-body">
-                    <h4>Här ska discription in</h4>
-                    <input value={description} onChange={event => setDescription(event.target.value)} />
+                    <h4>Description</h4>
+                    <textarea className='input-desc' rows={8} cols="50" value={description} onChange={event => setDescription(event.target.value)} /> 
                 </div>
+            
                 <div className="modal-footer">
                     <button className="close-button" onClick={closeButton}>Close</button>
                     <button className="save-button" onClick={saveButton}>Save</button>

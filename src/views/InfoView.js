@@ -4,6 +4,7 @@ import { useRecoilState, useSetRecoilState } from "recoil";
 import { apiGetSpecificBlogPost } from "../api";
 import EditModal from "../components/EditModal";
 import { blogPostDataState, modalState } from "../states";
+import '../css/infoView.css'
 
 
 // *EGEN NOTERING* skicka med blogPost-data till EditModal-komponenten 
@@ -39,17 +40,23 @@ function InfoView(props){
         return <div>loading</div>
     }
     return <>
-        <h1> InfoView </h1>
-        <div>
-            <button onClick={() => navigate('/')}>tillbaka</button>
-            <div>Id: {data.id}</div>
-            <div>Title: {data.title}</div>
-            <div>Description: {data.description}</div>
-            <div>Created: {data.created_date}</div>
+        <div className="header"> InfoView </div>
+            <p className="view-btn" onClick={() => navigate('/')}>tillbaka</p>
+        <div className="view-container">
+            {/* <div className="view-id">Id: {data.id}</div> */}
+            <div className="view-title">
+                <h3>{data.title}</h3>
+            </div>
+            <div className="view-description">
+                <p>{data.description}</p>
+            </div>
+            <div className="view-created-date">Created: {data.created_date}</div>
         </div>
-        <button onClick={editPost}>Edit</button>
+        <div className="btn-container">
+        <button className="edit-btn" onClick={editPost}>Edit</button>
         <EditModal blogPost={data} />
-        <button onClick={() => deletePost(data)}>Delete</button>
+        <button className="delete-btn" onClick={() => deletePost(data)}>Delete</button>
+        </div>
     </>
 }
  
