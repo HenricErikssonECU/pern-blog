@@ -1,4 +1,6 @@
-
+// dessa funktioner sköter fetch-anropen till servern och alla har ett funktionsnamn som tydligt ska förklara vad funktionen gör.
+// vid get-anrop behövs ingen ytterligare information skickas med, medan resterande http-anrop (put, post och delete i vårt fall) behöver inkludera viss information, såsom 'metod' och/eller 'Content-Type'.
+// responsen sparas här i 'response' och returneras så att datan sedan kan användas där funktionerna har anropats.
 
 // GET ALL
 export async function apiGetAllBlogPosts(){
