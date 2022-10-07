@@ -24,6 +24,8 @@ function CreateView(){
     }
 
 
+    // Borde lagt med en character-count vid input-fältet
+
     return <>
         <div className="header">Create blog post</div>
         <p className="view-btn" onClick={() => navigate('/')}>tillbaka</p>
@@ -31,10 +33,12 @@ function CreateView(){
             <div className="modal-header">
                 <h4 className="modal-title"> Title</h4>
                 <input onChange={event => setTitle(event.target.value)} />
+                <p className="input-characters">MAX 50 characters</p>
             </div>
             <div className="modal-body">
                 <h4>Description</h4>
                 <textarea className='input-desc' rows={8} cols="50" onChange={event => setDescription(event.target.value)} /> 
+                <p className="input-characters">MAX 1600 characters</p>
             </div>
             <button className="save-button" onClick={create}>Save</button>
         </form>
